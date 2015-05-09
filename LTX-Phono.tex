@@ -1,0 +1,89 @@
+\documentclass{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tipa}
+\usepackage{tikz}
+
+\newcounter{ex}
+\newcommand{\nex}[1][\theex]{\setcounter{ex}{#1}\theex\stepcounter{ex}}
+
+\newenvironment{word}{\begin{tikzpicture}
+  [level 1/.style={sibling distance=15mm},
+  level 2/.style={sibling distance=10mm}, 
+  every node/.style={text height=0.5em,text depth=0em},
+  level distance=8mm]\setcounter{ex}{1}}{\end{tikzpicture}}
+
+\newcommand{\syllabe}[3]{child {node {$\sigma_{\nex}$}%
+child {node {A} child { child {node {\textipa{#1}}}}}%
+child {node {R}%
+  child {node {N} child {node {\textipa{#2}}}}%
+  child {node {Co} child {node {#3}}}%
+}%
+}%
+}%
+
+
+\begin{document}
+
+\begin{word}  
+\node {word} 
+child {node {$\sigma_{\nex[1]}$}
+child {node {A} 
+  child { child {node {\textipa{Z}}}
+  }
+}
+child {node {R}
+  child {node {N} child {node {\textipa{@}}}}
+}
+}
+child {node {$\sigma_{\nex}$}
+child {node {A} 
+  child { child {node {\textipa{m}}}
+  }
+}
+child {node {R}
+  child {node {N} child {node {\textipa{Ã}}}}
+}
+}
+child {node {$\sigma_{\nex}$}
+child {node {A} 
+  child { child {node {\textipa{Z}}}
+  }
+}
+child {node {R}
+  child {node {N} child {node {\textipa{\~{œ}}}}}
+}
+}
+child {node {$\sigma_{\nex}$}
+child {node {A} 
+  child { child {node {\textipa{n}}}
+  }
+}
+child {node {R}
+  child {node {N} child {node {\textipa{a}}}}
+}
+}
+%child {node {$\sigma_{\nex}$}
+%child {node {A} 
+%  child { child {node {\textipa{n}}}
+%  }
+%}
+%child {node {R}
+%  child {node {N} child {node {\textipa{a}}}}
+%}
+%}
+\syllabe{n}{a}{}
+\syllabe{n}{a}{s};
+%child {node {$\sigma_{\nex}$}
+%child {node {A} 
+%  child { child {node {\textipa{n}}}
+%  }
+%}
+%child {node {R}
+%  child {node {N} child {node {\textipa{a}}}}
+%  child {node {Co} child {node {s}}}
+%}
+%};
+\end{word}
+
+\end{document}
