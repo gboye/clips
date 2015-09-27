@@ -1,5 +1,10 @@
 {
  "cells": [
+<<<<<<< HEAD
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+=======
   {
    "cell_type": "code",
    "execution_count": 9,
@@ -15,6 +20,7 @@
   {
    "cell_type": "code",
    "execution_count": 16,
+>>>>>>> origin/master
    "metadata": {
     "collapsed": false
    },
@@ -23,13 +29,61 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
+<<<<<<< HEAD
+      "34.3630722761 2.3612023712\n",
+      "2.75162916739 0.86804235625\n"
+=======
       "element ***\n",
       "tertre azertyuiop\n",
       "HLM qsdfghjklm\n"
+>>>>>>> origin/master
      ]
     }
    ],
    "source": [
+<<<<<<< HEAD
+    "import re,codecs,math\n",
+    "textFile=\"./test.txt\"\n",
+    "with codecs.open(textFile,\"r\",encoding=\"utf8\") as input:\n",
+    "    text=input.readlines()\n",
+    "    \n",
+    "\n",
+    "def countWords(text):\n",
+    "    wordFreq={}\n",
+    "    nbWords=0\n",
+    "    for line in text:\n",
+    "        chunks=line.split(\" \")\n",
+    "        for chunk in chunks:\n",
+    "            m=re.findall(u\"\\w+\",chunk,re.UNICODE)\n",
+    "            if m:\n",
+    "                for element in m:\n",
+    "                    word=element.lower()\n",
+    "                    if not word in wordFreq:\n",
+    "                        wordFreq[word]=0\n",
+    "                    wordFreq[word]+=1\n",
+    "                    nbWords+=1\n",
+    "    return (wordFreq,nbWords)\n",
+    "\n",
+    "def calculateEntropy(freqDict,total):\n",
+    "    entropy=0\n",
+    "    nbElements=0\n",
+    "    for element in freqDict:\n",
+    "        p=float(freqDict[element])/total\n",
+    "        entropy-=p*math.log(p,2)\n",
+    "        nbElements+=1\n",
+    "    if nbElements==total:\n",
+    "        return entropy\n",
+    "    else:\n",
+    "        return calculateEntropy(freqDict,nbElements)\n",
+    "(wordFreq,nbWords)=countWords(text)\n",
+    "entropy=calculateEntropy(wordFreq,nbWords)\n",
+    "print entropy, entropy/math.log(nbWords,2)\n",
+    "\n",
+    "wordList = ['the', 'the', 'the', 'a', 'a', 'over', 'love', 'one', 'tree']    \n",
+    "(wordFreq,nbWords)=countWords(wordList)\n",
+    "entropy=calculateEntropy(wordFreq,nbWords)\n",
+    "print entropy, entropy/math.log(nbWords,2)\n"
+=======
     "for mot in mots:\n",
     "    lowerMot=mot.lower()\n",
     "    multi=True\n",
@@ -40,16 +94,131 @@
     "            multi=False\n",
     "    if multi: \n",
     "        print mot, \"***\""
+>>>>>>> origin/master
    ]
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 12,
+=======
    "execution_count": 14,
+>>>>>>> origin/master
    "metadata": {
     "collapsed": false
    },
    "outputs": [
     {
+<<<<<<< HEAD
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "2\n",
+      "Fizz\n",
+      "4\n",
+      "Buzz\n",
+      "Fizz\n",
+      "7\n",
+      "8\n",
+      "Fizz\n",
+      "Buzz\n",
+      "11\n",
+      "Fizz\n",
+      "13\n",
+      "14\n",
+      "FizzBuzz\n",
+      "16\n",
+      "17\n",
+      "Fizz\n",
+      "19\n",
+      "Buzz\n",
+      "Fizz\n",
+      "22\n",
+      "23\n",
+      "Fizz\n",
+      "Buzz\n",
+      "26\n",
+      "Fizz\n",
+      "28\n",
+      "29\n",
+      "FizzBuzz\n",
+      "31\n",
+      "32\n",
+      "Fizz\n",
+      "34\n",
+      "Buzz\n",
+      "Fizz\n",
+      "37\n",
+      "38\n",
+      "Fizz\n",
+      "Buzz\n",
+      "41\n",
+      "Fizz\n",
+      "43\n",
+      "44\n",
+      "FizzBuzz\n",
+      "46\n",
+      "47\n",
+      "Fizz\n",
+      "49\n",
+      "Buzz\n",
+      "Fizz\n",
+      "52\n",
+      "53\n",
+      "Fizz\n",
+      "Buzz\n",
+      "56\n",
+      "Fizz\n",
+      "58\n",
+      "59\n",
+      "FizzBuzz\n",
+      "61\n",
+      "62\n",
+      "Fizz\n",
+      "64\n",
+      "Buzz\n",
+      "Fizz\n",
+      "67\n",
+      "68\n",
+      "Fizz\n",
+      "Buzz\n",
+      "71\n",
+      "Fizz\n",
+      "73\n",
+      "74\n",
+      "FizzBuzz\n",
+      "76\n",
+      "77\n",
+      "Fizz\n",
+      "79\n",
+      "Buzz\n",
+      "Fizz\n",
+      "82\n",
+      "83\n",
+      "Fizz\n",
+      "Buzz\n",
+      "86\n",
+      "Fizz\n",
+      "88\n",
+      "89\n",
+      "FizzBuzz\n",
+      "91\n",
+      "92\n",
+      "Fizz\n",
+      "94\n",
+      "Buzz\n",
+      "Fizz\n",
+      "97\n",
+      "98\n",
+      "Fizz\n",
+      "Buzz\n"
+     ]
+    }
+   ],
+   "source": [
+    "i=0;exec\"print i%3/2*'Fizz'+i%5/4*'Buzz'or-~i;i+=1;\"*100"
+=======
      "data": {
       "text/plain": [
        "False"
@@ -62,10 +231,41 @@
    ],
    "source": [
     "set(mot).issubset(set(ligne))"
+>>>>>>> origin/master
    ]
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+=======
+>>>>>>> origin/master
    "execution_count": 13,
    "metadata": {
     "collapsed": false
@@ -275,6 +475,7 @@
     "collapsed": false
    },
    "outputs": [
+<<<<<<< HEAD
     {
      "name": "stdout",
      "output_type": "stream",
@@ -308,10 +509,48 @@
     "collapsed": false
    },
    "outputs": [
+=======
+>>>>>>> origin/master
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
+<<<<<<< HEAD
+=======
+      "9\n",
+      "20\n",
+      "11\n",
+      "17\n",
+      "19\n",
+      "13\n"
+     ]
+    }
+   ],
+   "source": [
+    "liste=[u\"_ _ _ α _ _ _ _ _\",\n",
+    "       u\"_ _ _ _ _ _ _ β _ _ _ _ _ _ _ _ _ _ _ _\",\n",
+    "       u\"_ γ _ _ _ _ _ _ _ _ _\",\n",
+    "       u\"_ _ _ _ _ _ _ _ _ _ _ _ _ δ _ _ _\",\n",
+    "       u\"_ _ _ _ _ _ _ _ _ _ _ _ _ _ ε _ _ _ _\",\n",
+    "       u\"ζ _ _ _ _ _ _ _ _ _ _ _ _\"]\n",
+    "\n",
+    "for element in liste:\n",
+    "    mot=element.replace(\" \",\"\")\n",
+    "    print len(mot)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+>>>>>>> origin/master
       "20\n",
       "11\n",
       "11\n",

@@ -2,19 +2,8 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 9,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
-   "source": [
-    "lignes=[\"azertyuiop\",\"qsdfghjklm\",\"wxcvbn\"]\n",
-    "mots=[\"element\",\"tertre\",\"HLM\"]"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 16,
+<<<<<<< HEAD
+   "execution_count": 26,
    "metadata": {
     "collapsed": false
    },
@@ -23,13 +12,193 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "element ***\n",
-      "tertre azertyuiop\n",
-      "HLM qsdfghjklm\n"
+      "34.3630722761 2.3612023712\n",
+      "2.75162916739 0.86804235625\n"
      ]
     }
    ],
    "source": [
+    "import re,codecs,math\n",
+    "textFile=\"./test.txt\"\n",
+    "with codecs.open(textFile,\"r\",encoding=\"utf8\") as input:\n",
+    "    text=input.readlines()\n",
+    "    \n",
+    "\n",
+    "def countWords(text):\n",
+    "    wordFreq={}\n",
+    "    nbWords=0\n",
+    "    for line in text:\n",
+    "        chunks=line.split(\" \")\n",
+    "        for chunk in chunks:\n",
+    "            m=re.findall(u\"\\w+\",chunk,re.UNICODE)\n",
+    "            if m:\n",
+    "                for element in m:\n",
+    "                    word=element.lower()\n",
+    "                    if not word in wordFreq:\n",
+    "                        wordFreq[word]=0\n",
+    "                    wordFreq[word]+=1\n",
+    "                    nbWords+=1\n",
+    "    return (wordFreq,nbWords)\n",
+    "\n",
+    "def calculateEntropy(freqDict,total):\n",
+    "    entropy=0\n",
+    "    nbElements=0\n",
+    "    for element in freqDict:\n",
+    "        p=float(freqDict[element])/total\n",
+    "        entropy-=p*math.log(p,2)\n",
+    "        nbElements+=1\n",
+    "    if nbElements==total:\n",
+    "        return entropy\n",
+    "    else:\n",
+    "        return calculateEntropy(freqDict,nbElements)\n",
+    "(wordFreq,nbWords)=countWords(text)\n",
+    "entropy=calculateEntropy(wordFreq,nbWords)\n",
+    "print entropy, entropy/math.log(nbWords,2)\n",
+    "\n",
+    "wordList = ['the', 'the', 'the', 'a', 'a', 'over', 'love', 'one', 'tree']    \n",
+    "(wordFreq,nbWords)=countWords(wordList)\n",
+    "entropy=calculateEntropy(wordFreq,nbWords)\n",
+    "print entropy, entropy/math.log(nbWords,2)\n"
+=======
+   "execution_count": 9,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "lignes=[\"azertyuiop\",\"qsdfghjklm\",\"wxcvbn\"]\n",
+    "mots=[\"element\",\"tertre\",\"HLM\"]"
+>>>>>>> origin/master
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 12,
+=======
+   "execution_count": 16,
+>>>>>>> origin/master
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+<<<<<<< HEAD
+      "1\n",
+      "2\n",
+      "Fizz\n",
+      "4\n",
+      "Buzz\n",
+      "Fizz\n",
+      "7\n",
+      "8\n",
+      "Fizz\n",
+      "Buzz\n",
+      "11\n",
+      "Fizz\n",
+      "13\n",
+      "14\n",
+      "FizzBuzz\n",
+      "16\n",
+      "17\n",
+      "Fizz\n",
+      "19\n",
+      "Buzz\n",
+      "Fizz\n",
+      "22\n",
+      "23\n",
+      "Fizz\n",
+      "Buzz\n",
+      "26\n",
+      "Fizz\n",
+      "28\n",
+      "29\n",
+      "FizzBuzz\n",
+      "31\n",
+      "32\n",
+      "Fizz\n",
+      "34\n",
+      "Buzz\n",
+      "Fizz\n",
+      "37\n",
+      "38\n",
+      "Fizz\n",
+      "Buzz\n",
+      "41\n",
+      "Fizz\n",
+      "43\n",
+      "44\n",
+      "FizzBuzz\n",
+      "46\n",
+      "47\n",
+      "Fizz\n",
+      "49\n",
+      "Buzz\n",
+      "Fizz\n",
+      "52\n",
+      "53\n",
+      "Fizz\n",
+      "Buzz\n",
+      "56\n",
+      "Fizz\n",
+      "58\n",
+      "59\n",
+      "FizzBuzz\n",
+      "61\n",
+      "62\n",
+      "Fizz\n",
+      "64\n",
+      "Buzz\n",
+      "Fizz\n",
+      "67\n",
+      "68\n",
+      "Fizz\n",
+      "Buzz\n",
+      "71\n",
+      "Fizz\n",
+      "73\n",
+      "74\n",
+      "FizzBuzz\n",
+      "76\n",
+      "77\n",
+      "Fizz\n",
+      "79\n",
+      "Buzz\n",
+      "Fizz\n",
+      "82\n",
+      "83\n",
+      "Fizz\n",
+      "Buzz\n",
+      "86\n",
+      "Fizz\n",
+      "88\n",
+      "89\n",
+      "FizzBuzz\n",
+      "91\n",
+      "92\n",
+      "Fizz\n",
+      "94\n",
+      "Buzz\n",
+      "Fizz\n",
+      "97\n",
+      "98\n",
+      "Fizz\n",
+      "Buzz\n"
+=======
+      "element ***\n",
+      "tertre azertyuiop\n",
+      "HLM qsdfghjklm\n"
+>>>>>>> origin/master
+     ]
+    }
+   ],
+   "source": [
+<<<<<<< HEAD
+    "i=0;exec\"print i%3/2*'Fizz'+i%5/4*'Buzz'or-~i;i+=1;\"*100"
+=======
     "for mot in mots:\n",
     "    lowerMot=mot.lower()\n",
     "    multi=True\n",
@@ -40,10 +209,37 @@
     "            multi=False\n",
     "    if multi: \n",
     "        print mot, \"***\""
+>>>>>>> origin/master
    ]
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+=======
    "execution_count": 14,
    "metadata": {
     "collapsed": false
@@ -63,6 +259,7 @@
    "source": [
     "set(mot).issubset(set(ligne))"
    ]
+>>>>>>> origin/master
   },
   {
    "cell_type": "code",
